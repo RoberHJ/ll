@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Dedicatoria Especial</title>
+<!-- Fuentes bonitas -->
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Great+Vibes&display=swap" />
+<!-- Estilos CSS -->
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #ffe6f0, #e0f7fa);
+    font-family: 'Arial', sans-serif;
+    overflow: hidden;
+    height: 100vh;
+  }
+
+  /* Contenedor principal */
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    padding: 60px;
+    box-sizing: border-box;
+  }
+
+  /* Zona izquierda: título y frase */
+  .left {
+    flex: 1;
+    padding-right: 30px;
+    animation: fadeInLeft 1s ease-out;
+  }
+
+  /* Título izquierdo */
+  h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 4em;
+    color: #d81b60;
+    margin: 0 0 30px 0;
+    text-align: left;
+  }
+
+  /* Frase debajo del título */
+  p {
+    font-size: 2em;
+    margin: 0;
+    text-align: left;
+    color: #333;
+  }
+
+  /* Zona derecha: imagen y arcoíris */
+  .right {
+    flex: 1;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeInRight 1s ease-out;
+  }
+
+  
+
+  /* Efecto arcoíris en forma de halo alrededor de la imagen */
+  .rainbow {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background: conic-gradient(
+      red,
+      orange,
+      yellow,
+      green,
+      blue,
+      indigo,
+      violet,
+      red
+    );
+    filter: blur(20px);
+    opacity: 0.7;
+    animation: spin 10s linear infinite;
+  }
+
+  /* Imagen */
+  .image {
+    width: 300px;
+    height: 300px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    object-fit: cover;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Título debajo de la imagen */
+  .image-title {
+    text-align: center;
+    font-family: 'Great Vibes', cursive;
+    font-size: 2.5em;
+    margin-top: 25px;
+    color: #d81b60;
+  }
+
+  /* Animaciones de entrada */
+  @keyframes fadeInLeft {
+    from { opacity: 0; transform: translateX(-70px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  @keyframes fadeInRight {
+    from { opacity: 0; transform: translateX(70px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  @keyframes spin {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+  }
+
+  /* Escondo el audio, solo si quieres que sea visible, quita 'display: none' */
+  audio {
+    display: none;
+  }
+
+  /* Partículas (corazones y estrellas) */
+  .particle {
+    position: absolute;
+    bottom: 0;
+    background: transparent;
+    pointer-events: none;
+    z-index: 9999;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <!-- Zona izquierda -->
+  <div class="left">
+    <h1>Una Maestra muy Maravillosa 🥺</h1>
+    <p>Nunca dejes que nadie apague tu pasión por enseñar, porque dentro de ti hay una capacidad 
+        inmensa de transformar vidas. El tiempo que te conocí me demostraste una gran vocacion que tienes hacia tu carrera y me hace creer que seras
+        la mejor maestra algun dia, cuando ya finalices todos los retos y obstaculosque se vienen, se fuerte y siempre percebera. Yo creo en ti, y estaré aquí siempre 
+        para recordártelo si alguna vez lo olvidas ya para apoyarte si alguna vez lo necesitas.</p>
+        <br>
+    <p>De Alguien que te Admira Mucho: R.J.H.J</p>
+  </div>
+
+  <!-- Zona derecha -->
+  <div class="right">
+    <div class="image-container">
+      <!-- Arcoíris que rodea la imagen -->
+      <div class="rainbow"></div>
+      <!-- Imagen -->
+      <img src="img\lili.png" alt="Imagen especial" class="image" />
+      <!-- Título debajo -->
+      <div class="image-title">¡Lilialinda❤️!</div>
+    </div>
+  </div>
+</div>
+
+<!-- Música de fondo -->
+<audio src="music/Lovely.mp3" autoplay loop></audio>
+
+<!-- Scripts para efectos -->
+<script>
+  // Crear partículas (corazones y estrellas)
+  function createParticle() {
+    const particle = document.createElement('div');
+    particle.className = 'particle';
+
+    const size = Math.random() * 20 + 10;
+    const startLeft = Math.random() * window.innerWidth;
+
+    const isHeart = Math.random() < 0.5;
+
+    if (isHeart) {
+      particle.innerHTML = '❤';
+      particle.style.color = 'red';
+      particle.style.fontSize = size + 'px';
+    } else {
+      particle.innerHTML = '⭐';
+      particle.style.color = 'gold';
+      particle.style.fontSize = size + 'px';
+    }
+
+    particle.style.left = startLeft + 'px';
+
+    document.body.appendChild(particle);
+
+    const duration = Math.random() * 3 + 2; // 2 a 5 segundos
+    const translateX = (Math.random() - 0.5) * 200;
+
+    particle.animate([
+      { transform: `translateY(0px) translateX(0px)`, opacity: 1 },
+      { transform: `translateY(-${window.innerHeight}px) translateX(${translateX}px)`, opacity: 0 }
+    ], {
+      duration: duration * 1000,
+      easing: 'ease-out'
+    }).onfinish = () => {
+      particle.remove();
+    };
+  }
+
+  // Crear partículas periódicamente
+  setInterval(createParticle, 300);
+</script>
+
+</body>
+</html>
